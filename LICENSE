@@ -1,0 +1,34 @@
+Jyotiṣa — Free, Private Vedic Astrology
+Copyright (C) 2026 the Jyotiṣa contributors
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU Affero General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along
+with this program. If not, see <https://www.gnu.org/licenses/agpl-3.0.html>.
+
+────────────────────────────────────────────────────────────────────────────
+WHY AGPL-3.0
+────────────────────────────────────────────────────────────────────────────
+This project computes planetary positions with the Swiss Ephemeris
+(https://www.astro.com/swisseph/), via the `swisseph-wasm` package. The Swiss
+Ephemeris is dual-licensed:
+
+  1. GNU Affero General Public License v3 (AGPL-3.0), OR
+  2. A paid Swiss Ephemeris Professional license from Astrodienst AG.
+
+Because this project distributes and links the Swiss Ephemeris under option (1),
+the combined work is licensed under the AGPL-3.0.
+
+If you wish to distribute a CLOSED-SOURCE or PROPRIETARY derivative of this
+application, the AGPL grant is not sufficient: you must obtain a commercial
+Swiss Ephemeris license from Astrodienst AG (swisseph@astro.com) and separate
+your code from the AGPL portions accordingly.
+
+Full AGPL-3.0 text: https://www.gnu.org/licenses/agpl-3.0.txt

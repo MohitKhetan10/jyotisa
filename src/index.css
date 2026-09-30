@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-ink-950 text-parchment-100 font-sans antialiased;
+  margin: 0;
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(200, 42, 33, 0.05), transparent 40%),
+    radial-gradient(circle at 85% 100%, rgba(74, 21, 18, 0.04), transparent 45%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4 {
+  @apply font-serif;
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-ink-700 bg-ink-900 shadow-sm shadow-parchment-100/5;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-saffron-500 px-6 py-3
+           font-medium tracking-wide text-ink-950 transition hover:bg-saffron-600
+           focus:outline-none focus:ring-2 focus:ring-saffron-500 focus:ring-offset-2
+           focus:ring-offset-ink-950 disabled:opacity-50;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-full border border-saffron-500/40
+           px-6 py-3 font-medium text-saffron-600 transition hover:border-saffron-500
+           hover:bg-saffron-500/5 focus:outline-none focus:ring-2 focus:ring-saffron-500;
+  }
+  .field {
+    @apply w-full rounded-xl border border-ink-600 bg-ink-900 px-4 py-3 text-parchment-100
+           placeholder:text-parchment-200/40 focus:border-saffron-500 focus:outline-none
+           focus:ring-1 focus:ring-saffron-500;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-parchment-200/80;
+  }
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
