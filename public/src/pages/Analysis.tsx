@@ -25,7 +25,8 @@ export default function Analysis() {
               <div className="border-b border-ink-700 bg-ink-800 px-4 py-2 text-xs uppercase tracking-wide text-parchment-200/50">
                 {t('p.analysis.strength')}
               </div>
-              <table className="w-full text-left text-sm">
+              <div className="overflow-x-auto">
+              <table className="w-full min-w-[440px] text-left text-sm">
                 <tbody className="divide-y divide-ink-700">
                   {strengths.map((s) => (
                     <tr key={s.planet}>
@@ -46,6 +47,7 @@ export default function Analysis() {
                   ))}
                 </tbody>
               </table>
+              </div>
               <p className="px-4 py-2 text-[11px] italic text-parchment-200/40">{STRENGTH_LIMITATIONS}</p>
             </div>
 

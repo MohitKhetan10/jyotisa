@@ -58,8 +58,8 @@ function TodayInner({ chart, birth }: { chart: RawChart; birth: BirthDetails }) 
         </div>
       </div>
 
-      <div className="card overflow-hidden">
-        <table className="w-full text-left text-sm">
+      <div className="card overflow-x-auto">
+        <table className="w-full min-w-[520px] text-left text-sm">
           <thead className="bg-ink-800 text-xs uppercase tracking-wide text-parchment-200/50">
             <tr><th className="px-4 py-2">{t('th.planet')}</th><th className="px-4 py-2">{t('th.signNow')}</th><th className="px-4 py-2">{t('th.fromMoon')}</th><th className="px-4 py-2">{t('th.motion')}</th></tr>
           </thead>
