@@ -71,6 +71,43 @@ describe('vargas', () => {
   });
 });
 
+describe('varga reference values (BPHS Parāśarī)', () => {
+  // Expected sign indices hand-derived from the classical rules for a planet at
+  // 10° Cancer (longitude 100°). Cancer is an even, movable sign. If any of these
+  // fail, that varga's mapping disagrees with the standard convention.
+  const L = 100; // 10° Cancer
+  const expected: Record<VargaId, number> = {
+    D1: 3,   // Cancer
+    D2: 3,   // even sign, 1st half → Moon's hora (Cancer)
+    D3: 7,   // 2nd drekkana → 5th sign → Scorpio
+    D4: 6,   // 2nd quarter → 4th sign → Libra
+    D7: 11,  // even sign starts 7th (Capricorn) + 2 → Pisces
+    D9: 6,   // Cancer navamsa, 4th part → Libra
+    D10: 2,  // even sign starts 9th (Aquarius) + 3 → Gemini
+    D12: 7,  // from sign + 4 → Scorpio
+    D16: 5,  // movable → Aries + 5 → Virgo
+    D20: 6,  // movable → Aries + 6 → Libra
+    D24: 11, // even → Cancer + 8 → Pisces
+    D27: 6,  // water → Capricorn + 9 → Libra
+    D30: 5,  // even, 5–12° → Mercury → Virgo
+    D40: 7,  // even → Libra + 13 → Scorpio
+    D45: 3,  // movable → Aries + 15 → Cancer
+    D60: 11, // from sign + 20 → Pisces
+  };
+  for (const [id, sign] of Object.entries(expected)) {
+    it(`${id} of 10° Cancer → ${sign}`, () => {
+      expect(vargaSignIndex(id as VargaId, L)).toBe(sign);
+    });
+  }
+
+  // A second anchor: 15° Aries (odd, movable) exercises the odd-sign branches.
+  it('odd-sign branches: D2/D7/D10 of 15° Aries', () => {
+    expect(vargaSignIndex('D2', 15)).toBe(3);   // odd 2nd half → Cancer
+    expect(vargaSignIndex('D7', 15)).toBe(3);   // odd starts same sign, 4th part → Cancer
+    expect(vargaSignIndex('D10', 15)).toBe(5);  // odd starts same sign, 5th part → Virgo
+  });
+});
+
 describe('vimshottari dasha', () => {
   const periods = () => vimshottari(chart);
   it('has 9 maha-dashas; from birth spans (120 − elapsed balance) years', () => {

@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import BirthInput from './pages/BirthInput';
 import Dashboard from './pages/Dashboard';
 import { useT, LanguageToggle } from './i18n/lang';
+import { ThemeToggle } from './theme/theme';
 import Logo from './components/Logo';
 
 // Analysis pages are lazy-loaded to keep the initial bundle light.
@@ -64,6 +65,7 @@ function Header() {
               </NavLink>
             ))}
           </nav>
+          <ThemeToggle />
           <LanguageToggle />
         </div>
       </div>
