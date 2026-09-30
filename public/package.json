@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node scripts/copy-wasm.mjs && vite",
     "prebuild": "node scripts/copy-wasm.mjs",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "verify:engine": "node scripts/verify-engine.mjs",
     "test": "vitest run",
     "lint": "oxlint",
