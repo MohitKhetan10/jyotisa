@@ -5,9 +5,15 @@
 import { copyFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const src = join(root, 'node_modules', 'swisseph-wasm', 'wasm');
+// Resolve swisseph-wasm via Node's module resolution rather than a hardcoded
+// node_modules path, so the build works regardless of where the package is
+// installed (root, hoisted, or a base-directory install on CI).
+const require = createRequire(import.meta.url);
+const pkgDir = dirname(require.resolve('swisseph-wasm/package.json'));
+const src = join(pkgDir, 'wasm');
 const dest = join(root, 'public', 'wasm');
 
 mkdirSync(dest, { recursive: true });
