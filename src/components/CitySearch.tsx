@@ -53,7 +53,7 @@ export default function CitySearch({ value, onSelect }: Props) {
         type="text"
         className="field"
         autoComplete="off"
-        placeholder="Search city… e.g. Kathmandu, Pokhara, Delhi, Varanasi"
+        placeholder="Search any city… e.g. Kathmandu, Delhi, London, New York"
         value={query}
         onChange={handleChange}
         onFocus={() => results.length > 0 && setOpen(true)}

@@ -3,3 +3,6 @@ dist
 public/wasm
 .DS_Store
 *.local
+
+# GeoNames raw dumps (build inputs for build_places.py, not source)
+scripts/geodata/

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import CitySearch from '../components/CitySearch';
 import type { Place } from '../lib/places';
+import { offsetForZone } from '../lib/tz';
 import type { BirthDetails, RawChart } from '../types/chart';
 import { computeChart } from '../engine/ephemeris/swiss';
 import { ashtakoota, type MatchReport } from '../engine/compatibility/ashtakoota';
@@ -27,8 +28,9 @@ function PersonForm({ label, draft, set }: { label: string; draft: Draft; set: (
 const toBirth = (d: Draft): BirthDetails => {
   const [y, m, dd] = d.date.split('-').map(Number);
   const [hh, mm] = (d.time || '12:00').split(':').map(Number);
+  const tzOffset = offsetForZone(d.place!.tz, y, m, dd, hh, mm);
   return { name: d.name || 'Person', year: y, month: m, day: dd, hour: hh, minute: mm,
-    timeKnown: !!d.time, place: d.place!.label, lat: d.place!.lat, lon: d.place!.lon, tzOffset: d.place!.tzOffset };
+    timeKnown: !!d.time, place: d.place!.label, lat: d.place!.lat, lon: d.place!.lon, tzOffset };
 };
 
 export default function Compatibility() {

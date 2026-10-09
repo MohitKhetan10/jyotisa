@@ -1,7 +1,7 @@
 const SECTIONS: [string, string][] = [
   ['Zodiac & Ayanāṁśa', 'Sidereal zodiac (fixed to the stars). Default ayanāṁśa is Lahiri; Raman, Krishnamurti and Fagan-Bradley are supported. The ayanāṁśa is applied by the Swiss Ephemeris via its sidereal mode.'],
   ['Ephemeris', 'Swiss Ephemeris 2.10 (AGPL-3.0), compiled to WebAssembly, running entirely in your browser with its bundled .se1 data (planets, Moon, asteroids), covering ~1800-2400 AD at full precision.'],
-  ['Coordinates & Time', 'Your local birth time is converted to UTC using the birthplace’s standard offset (Nepal +5:45, India +5:30), then to Julian Day (UT). Positions are geocentric.'],
+  ['Coordinates & Time', 'Your local birth time is converted to UTC using the birthplace’s IANA timezone, resolved for the birth date so historical daylight-saving is applied correctly, then to Julian Day (UT). Positions are geocentric.'],
   ['House system', 'Whole-sign houses: the ascendant’s sign is the 1st house; each following sign is the next house. The ascendant is computed from the sidereal Midheaven/horizon.'],
   ['Nodes', 'Rāhu uses the true node; Ketu is exactly 180° opposite.'],
   ['Divisional charts', 'One consistent Parāśarī convention is used for all 16 vargas (documented in docs/VARGA_CALCULATIONS.md). Schools differ on some methods; D60 is very sensitive to birth-time accuracy.'],

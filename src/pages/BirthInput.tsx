@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import CitySearch from '../components/CitySearch';
 import { useChart } from '../store/chart';
 import type { Place } from '../lib/places';
+import { offsetForZone } from '../lib/tz';
 import { useT } from '../i18n/lang';
 
 export default function BirthInput() {
@@ -28,12 +29,15 @@ export default function BirthInput() {
     const [y, m, d] = date.split('-').map(Number);
     const [hh, mm] = (timeKnown ? time : '12:00').split(':').map(Number);
 
+    // DST-correct offset at the birth instant, not the city's present-day one.
+    const tzOffset = offsetForZone(place.tz, y, m, d, hh, mm);
+
     await generate({
       name: name.trim() || 'Seeker',
       year: y, month: m, day: d,
       hour: hh, minute: mm,
       timeKnown,
-      place: place.label, lat: place.lat, lon: place.lon, tzOffset: place.tzOffset,
+      place: place.label, lat: place.lat, lon: place.lon, tzOffset,
     });
     navigate('/dashboard');
   }
