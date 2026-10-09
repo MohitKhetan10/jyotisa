@@ -3,15 +3,18 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.tsx';
 import { LangProvider } from './i18n/lang';
+import { ThemeProvider } from './theme/theme';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <LangProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </LangProvider>
+    <ThemeProvider>
+      <LangProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </LangProvider>
+    </ThemeProvider>
   </StrictMode>,
 );
 

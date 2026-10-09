@@ -6,3 +6,12 @@ public/wasm
 
 # GeoNames raw dumps (build inputs for build_places.py, not source)
 scripts/geodata/
+
+# Marketing render artifacts (regenerable via build scripts; keep sources only)
+marketing/tmp/
+marketing/clips/
+marketing/clips_v/
+marketing/scenes/
+marketing/scenes_v/
+marketing/shots/
+marketing/out/

@@ -1,37 +1,46 @@
 /** @type {import('tailwindcss').Config} */
+
+// Every colour is driven by a CSS variable (space-separated RGB channels) so a
+// single `.dark` class on <html> re-themes the whole app. Token *names* stay
+// stable and semantic across the codebase:
+//   "ink"       = surfaces (page / cards / inputs / borders)
+//   "parchment" = text (headings & body)
+//   "saffron"   = primary accent (terracotta in light, gold in dark)
+//   "lotus"     = caution rose,  "clay" = positive green
+// The actual values live in src/index.css under :root (light) and .dark.
+const v = (name) => `rgb(var(${name}) / <alpha-value>)`;
+
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        // Warm, hand-crafted palette. Token names kept stable across the app;
-        // "ink" = warm surfaces (light), "parchment" = burgundy ink (text),
-        // "saffron" = terracotta accent, "lotus" = deep rose for cautions.
         ink: {
-          950: '#faf6f0', // page background (cream)
-          900: '#fffdfa', // card
-          800: '#f3e9dd', // inputs / hover
-          700: '#e7d8c6', // border
-          600: '#d8c3ad', // stronger border
+          950: v('--ink-950'),
+          900: v('--ink-900'),
+          800: v('--ink-800'),
+          700: v('--ink-700'),
+          600: v('--ink-600'),
         },
         parchment: {
-          50: '#3d1210',
-          100: '#4a1512', // primary text & headings (deep burgundy)
-          200: '#6b3b34', // muted body text
+          50: v('--parchment-50'),
+          100: v('--parchment-100'),
+          200: v('--parchment-200'),
         },
         saffron: {
-          400: '#d14a3f',
-          500: '#c82a21', // primary terracotta
-          600: '#a8231b',
+          400: v('--saffron-400'),
+          500: v('--saffron-500'),
+          600: v('--saffron-600'),
         },
         lotus: {
-          400: '#9c3a55',
-          500: '#7e2e44',
+          400: v('--lotus-400'),
+          500: v('--lotus-500'),
         },
         clay: {
-          300: '#8a9b68', // muted olive for "positive/strong" (warm-friendly green)
-          400: '#7a8b5a',
-          500: '#5f6f42',
+          300: v('--clay-300'),
+          400: v('--clay-400'),
+          500: v('--clay-500'),
         },
       },
       fontFamily: {

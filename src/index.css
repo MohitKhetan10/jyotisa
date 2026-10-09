@@ -2,8 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Palettes ───────────────────────────────────────────────────────────────
+   Values are space-separated RGB channels (consumed by tailwind.config.js via
+   rgb(var(--token) / <alpha-value>)). :root is the warm cream LIGHT theme;
+   .dark is the classic black-&-gold theme. Token names are semantic:
+   ink = surfaces, parchment = text, saffron = accent. */
 :root {
   color-scheme: light;
+  /* surfaces */
+  --ink-950: 250 246 240;  /* page background (cream) */
+  --ink-900: 255 253 250;  /* card */
+  --ink-800: 243 233 221;  /* inputs / hover */
+  --ink-700: 231 216 198;  /* border */
+  --ink-600: 216 195 173;  /* stronger border */
+  /* text (deep burgundy) */
+  --parchment-50:  61 18 16;
+  --parchment-100: 74 21 18;
+  --parchment-200: 107 59 52;
+  /* accent (terracotta) */
+  --saffron-400: 209 74 63;
+  --saffron-500: 200 42 33;
+  --saffron-600: 168 35 27;
+  /* caution rose */
+  --lotus-400: 156 58 85;
+  --lotus-500: 126 46 68;
+  /* positive olive-green */
+  --clay-300: 138 155 104;
+  --clay-400: 122 139 90;
+  --clay-500: 95 111 66;
+  /* ambient page glows */
+  --glow-a: 200 42 33;
+  --glow-b: 74 21 18;
+}
+
+.dark {
+  color-scheme: dark;
+  /* surfaces (warm near-black) */
+  --ink-950: 12 10 6;      /* page background */
+  --ink-900: 22 18 11;     /* card */
+  --ink-800: 32 27 16;     /* inputs / hover */
+  --ink-700: 48 40 23;     /* border */
+  --ink-600: 66 55 31;     /* stronger border */
+  /* text (warm cream) — parchment-50 is the lightest here */
+  --parchment-50:  255 250 240;
+  --parchment-100: 245 233 208;
+  --parchment-200: 200 181 143;
+  /* accent (gold) — saffron-600 is the lightest, used for text on dark */
+  --saffron-400: 201 151 31;
+  --saffron-500: 227 178 45;   /* primary gold (button fill) */
+  --saffron-600: 242 207 99;   /* light gold (accent text/links) */
+  /* caution rose (lifted for dark) */
+  --lotus-400: 214 133 152;
+  --lotus-500: 196 106 128;
+  /* positive green (lifted for dark) */
+  --clay-300: 170 190 124;
+  --clay-400: 148 168 102;
+  --clay-500: 124 144 80;
+  /* ambient page glows (subtle gold) */
+  --glow-a: 227 178 45;
+  --glow-b: 120 90 20;
 }
 
 html, body, #root {
@@ -14,9 +71,10 @@ body {
   @apply bg-ink-950 text-parchment-100 font-sans antialiased;
   margin: 0;
   background-image:
-    radial-gradient(circle at 15% 0%, rgba(200, 42, 33, 0.05), transparent 40%),
-    radial-gradient(circle at 85% 100%, rgba(74, 21, 18, 0.04), transparent 45%);
+    radial-gradient(circle at 15% 0%, rgb(var(--glow-a) / 0.05), transparent 40%),
+    radial-gradient(circle at 85% 100%, rgb(var(--glow-b) / 0.05), transparent 45%);
   background-attachment: fixed;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4 {
